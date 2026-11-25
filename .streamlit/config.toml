@@ -1,0 +1,32 @@
+[theme]
+base = "dark"
+primaryColor = "#2E7D5B"
+backgroundColor = "#14122B"
+secondaryBackgroundColor = "#1E1B38"
+textColor = "#F6F4FF"
+font = "sans serif"
+linkColor = "#4ADD82"
+borderColor = "#322E52"
+dataframeHeaderBackgroundColor = "#1E1B38"
+codeBackgroundColor = "#100E22"
+showWidgetBorder = true
+chartCategoricalColors = ["#4ADD82", "#8B87A8", "#B9B5D6", "#5B577A", "#F6F4FF"]
+
+[theme.sidebar]
+backgroundColor = "#100E22"
+borderColor = "#322E52"
+
+[server]
+headless = true
+fileWatcherType = "poll"
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"
+showErrorDetails = "none"
+
+[runner]
+magicEnabled = false
+fastReruns = true
