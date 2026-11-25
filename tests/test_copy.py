@@ -25,7 +25,7 @@ def _has_emoji(text: str) -> bool:
 
 
 def test_ui_source_has_no_emoji():
-    paths = [ROOT / "app.py"]
+    paths = [ROOT / "streamlit_app.py"]
     paths += sorted((ROOT / "views").glob("*.py"))
     paths += sorted((ROOT / "ui").glob("*.py"))
 

@@ -21,7 +21,6 @@ load_dotenv()
 
 DEFAULT_BASE_URL = "https://tokenharbor.ai/v1"
 DEFAULT_MODEL = "deepseek-v4.1-flash:free"
-TRUE_VALUES = {"1", "true", "ya", "yes", "on"}
 
 MAX_TOKENS = {
     "path": 1200,
@@ -94,11 +93,6 @@ def config() -> Config:
     return Config(api_key=api_key, base_url=base_url.rstrip("/"), model=model)
 
 
-def offline() -> bool:
-    forced = _setting("LA_DEMO").lower() in TRUE_VALUES
-    return forced or not config().ready
-
-
 def _client() -> Any:
     from openai import OpenAI
 
@@ -136,8 +130,6 @@ def stream_chat(
     max_tokens: int = MAX_TOKENS["chat"],
     temperature: float = 0.7,
 ) -> Iterator[str]:
-    if offline():
-        raise LLMError("Mode contoh aktif.")
     cfg = config()
     if not cfg.ready:
         raise LLMError("Layanan AI belum siap. Hubungi pengelola aplikasi.")

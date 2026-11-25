@@ -7,7 +7,7 @@ import streamlit as st
 import db
 import state
 from models import LEVELS, STATUS_MASTERED
-from services import demo, quiz
+from services import quiz
 from ui import layout as ui
 from views import _common as common
 
@@ -34,9 +34,6 @@ def render() -> None:
     if not workspaces:
         st.subheader("Mulai dari satu tujuan")
         _new_workspace_form("home_new")
-        if demo_label_available():
-            if st.button(f"Coba contoh: {demo.SAMPLE_TITLE}", key="home_demo"):
-                common.create_workspace(demo.SAMPLE_TITLE, demo.SAMPLE_GOAL, "pemula")
         return
 
     store = state.get()
@@ -126,9 +123,3 @@ def render() -> None:
 
     with st.expander("Ruang belajar baru"):
         _new_workspace_form("home_more")
-
-
-def demo_label_available() -> bool:
-    from services import llm
-
-    return llm.offline()

@@ -17,7 +17,6 @@ def clean_env(monkeypatch):
         "LA_API_KEY",
         "LA_BASE_URL",
         "LA_MODEL",
-        "LA_DEMO",
     ):
         monkeypatch.delenv(name, raising=False)
     monkeypatch.setattr(llm, "_secret_value", lambda name: "")
@@ -46,11 +45,6 @@ def test_primary_names_win(clean_env):
     assert llm.config().api_key == "utama"
 
 
-def test_demo_flag_forces_offline(clean_env):
-    clean_env.setenv("TH_API_KEY", "thk_test")
-    clean_env.setenv("LA_DEMO", "1")
-    assert llm.offline() is True
-
-
-def test_no_key_means_demo(clean_env):
-    assert llm.offline() is True
+def test_no_key_means_not_ready(clean_env):
+    cfg = llm.config()
+    assert cfg.ready is False

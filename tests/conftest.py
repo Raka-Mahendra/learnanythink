@@ -17,6 +17,5 @@ import db  # noqa: E402
 @pytest.fixture()
 def temp_db(tmp_path, monkeypatch):
     monkeypatch.setenv("LA_DB_PATH", str(tmp_path / "learning.db"))
-    monkeypatch.setenv("LA_DEMO", "1")
     db.init()
     return db.db_path()

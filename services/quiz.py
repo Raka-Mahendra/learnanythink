@@ -13,7 +13,7 @@ from models import (
     Topic,
     Workspace,
 )
-from services import demo, llm, learning
+from services import llm, learning
 from services.prompts import ESSAY_PROMPT, GRADE_PROMPT, MC_PROMPT, TUTOR
 from services.schemas import EssayGrades, EssayQuiz, MCQuiz
 
@@ -107,8 +107,6 @@ def generate(
     difficulty: str = "sedang",
 ) -> list[dict]:
     count = max(1, min(10, int(count)))
-    if llm.offline():
-        return demo.quiz(kind, count, _existing_texts(workspace.id, topic.id if topic else None, kind))
     topic_id = topic.id if topic else None
     excluded = "\n".join(f"- {text}" for text in _existing_texts(workspace.id, topic_id, kind))
     prompt = (MC_PROMPT if kind == "mc" else ESSAY_PROMPT).format(
@@ -292,29 +290,20 @@ def grade_essays(
                 "answer": (answers.get(question.id, "") or "").strip(),
             }
         )
-    if llm.offline():
-        raw = demo.essay_grades(
-            [
-                {"number": item["number"], "answer_text": item["answer"]}
-                for item in payload
-            ]
+    blocks = []
+    for item in payload:
+        question = item["question"]
+        blocks.append(
+            f"Nomor {item['number']}\nSoal: {question.text}\n"
+            f"Poin kunci: {', '.join(question.key_points)}\n"
+            f"Jawaban pelajar: {item['answer'] or '(tidak dijawab)'}"
         )
-        result = EssayGrades.model_validate(raw)
-    else:
-        blocks = []
-        for item in payload:
-            question = item["question"]
-            blocks.append(
-                f"Nomor {item['number']}\nSoal: {question.text}\n"
-                f"Poin kunci: {', '.join(question.key_points)}\n"
-                f"Jawaban pelajar: {item['answer'] or '(tidak dijawab)'}"
-            )
-        result = llm.json_call(
-            TUTOR,
-            GRADE_PROMPT.format(qa="\n\n".join(blocks)),
-            EssayGrades,
-            llm.MAX_TOKENS["grade"],
-        )
+    result = llm.json_call(
+        TUTOR,
+        GRADE_PROMPT.format(qa="\n\n".join(blocks)),
+        EssayGrades,
+        llm.MAX_TOKENS["grade"],
+    )
     by_number = {grade.number: grade for grade in result.grades}
     for item in payload:
         grade = by_number.get(item["number"])

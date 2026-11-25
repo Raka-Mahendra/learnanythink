@@ -7,7 +7,7 @@ from typing import Iterator, Optional
 import db
 from models import Topic, Workspace
 from services import attachments as attachment_service
-from services import demo, learning, llm
+from services import learning, llm
 from services.prompts import TUTOR
 
 CONTEXT_LIMIT = 7_000
@@ -75,9 +75,6 @@ def reply(
             "content": [{"type": "text", "text": text}, *images],
         }
 
-    if llm.offline():
-        yield from demo.tutor_reply(messages, context)
-        return
     yield from llm.stream_chat(system, messages, max_tokens=llm.MAX_TOKENS["chat"])
 
 

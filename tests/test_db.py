@@ -26,7 +26,7 @@ def test_lesson_completion_updates_mastery(temp_db):
     topic = db.replace_topics(
         workspace.id, [{"title": "Satu", "summary": "", "objectives": []}]
     )[0]
-    lesson = db.save_lesson(topic.id, {"title": "Materi"}, model="demo")
+    lesson = db.save_lesson(topic.id, {"title": "Materi"})
     assert db.latest_lesson(topic.id).completed is False
     db.complete_lesson(lesson.id)
     learning.refresh_topic(topic.id)

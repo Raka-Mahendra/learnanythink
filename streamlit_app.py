@@ -9,7 +9,6 @@ import streamlit as st
 import db
 import state
 from pages import PAGES
-from services import llm
 
 ROOT = Path(__file__).resolve().parent
 LOGO = ROOT / "Logo Kit" / "png" / "lockup-horizontal-dark-transparent.png"
@@ -69,9 +68,6 @@ def _sidebar() -> None:
                 state.go("home")
         else:
             st.caption("Belum ada ruang belajar.")
-
-        if llm.offline():
-            st.caption("Mode contoh")
 
 
 page = st.navigation(

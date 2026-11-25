@@ -6,7 +6,7 @@ from typing import Optional
 
 import db
 from models import Lesson, Topic, Workspace, STATUS_LEARNING, STATUS_MASTERED, STATUS_TODO
-from services import demo, llm
+from services import llm
 from services.prompts import LESSON_PROMPT, PATH_PROMPT, TUTOR
 from services.schemas import LearningPath, Lesson as LessonSchema
 
@@ -40,8 +40,6 @@ def _tidy_path(plan: LearningPath, existing: list[str]) -> list[dict]:
 
 
 def generate_path(workspace: Workspace) -> list[dict]:
-    if llm.offline():
-        return demo.path(workspace.goal)
     existing: list[str] = []
     prompt = PATH_PROMPT.format(
         goal=workspace.goal,
@@ -103,8 +101,6 @@ def _tidy_lesson(schema: LessonSchema) -> dict:
 
 
 def generate_lesson(workspace: Workspace, topic: Topic) -> tuple[dict, str]:
-    if llm.offline():
-        return demo.lesson(topic), "mode demo"
     topics = db.list_topics(workspace.id)
     previous = [
         item.title for item in topics if item.position < topic.position
