@@ -1,3 +1,5 @@
+<img src="Logo%20Kit/png/symbol-color.png" alt="Logo LearnAnythink" width="96">
+
 # LearnAnythink
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://learnanythink.streamlit.app/)
@@ -112,4 +114,4 @@ Tes mencakup perhitungan penguasaan, jadwal ulangan, repository SQLite, parsing 
 
 ## Lisensi
 
-Kode di repositori ini dilisensikan di bawah [MIT License](LICENSE). Folder `Logo Kit/` tidak termasuk dalam lisensi ini.
+Repositori ini belum menyertakan berkas lisensi.
