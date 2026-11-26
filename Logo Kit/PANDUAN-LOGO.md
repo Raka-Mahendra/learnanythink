@@ -32,5 +32,11 @@ Wordmark: Poppins Medium ("Learn") + Poppins Bold ("Anythink"), sudah diubah jad
 - Jangan menyempitkan celah antar ubin dan jangan memutar simbol utuh.
 - Jangan mengetik ulang wordmark dengan font lain.
 
-## Catatan
-Belum ada pemeriksaan merek dagang. Cek dulu ke database merek (misalnya PDKI) dan pencarian gambar terbalik sebelum dipakai resmi.
+## Penggunaan
+Hak cipta logo dan nama LearnAnythink ada pada Raka Mahendra. Folder `Logo Kit/` tidak termasuk dalam lisensi MIT yang berlaku untuk kode di repositori ini.
+
+Boleh tanpa izin: menyebut atau menautkan proyek ini, misalnya di artikel, README, atau presentasi, dengan logo yang tidak diubah bentuk dan warnanya.
+
+Perlu izin tertulis: memakai logo atau nama sebagai identitas produk, layanan, atau organisasi lain, memakai versi yang dimodifikasi, atau memakainya untuk keperluan komersial.
+
+Untuk izin, hubungi pemilik lewat profil GitHub [@Raka-Mahendra](https://github.com/Raka-Mahendra).
