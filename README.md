@@ -112,4 +112,4 @@ Tes mencakup perhitungan penguasaan, jadwal ulangan, repository SQLite, parsing 
 
 ## Lisensi
 
-MIT.
+Kode di repositori ini dilisensikan di bawah [MIT License](LICENSE). Folder `Logo Kit/` tidak termasuk dalam lisensi ini.
