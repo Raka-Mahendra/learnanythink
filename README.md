@@ -1,8 +1,12 @@
-<img src="Logo%20Kit/png/symbol-color.png" alt="Logo LearnAnythink" width="96">
+<p align="center">
+  <img src="Logo%20Kit/png/symbol-color.png" alt="Logo LearnAnythink" width="96">
+</p>
 
-# LearnAnythink
+<h1 align="center">LearnAnythink</h1>
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://learnanythink.streamlit.app/)
+<p align="center">
+  <a href="https://learnanythink.streamlit.app/"><img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Buka aplikasi di Streamlit"></a>
+</p>
 
 LearnAnythink adalah aplikasi belajar berbasis Streamlit yang mengubah satu tujuan belajar menjadi peta topik, materi, latihan soal, dan jadwal ulangan. Semua isinya ditulis model AI dalam bahasa Indonesia.
 
@@ -114,4 +118,4 @@ Tes mencakup perhitungan penguasaan, jadwal ulangan, repository SQLite, parsing 
 
 ## Lisensi
 
-Repositori ini belum menyertakan berkas lisensi.
+Kode di repositori ini dilisensikan di bawah [MIT License](LICENSE). Folder Logo Kit/ tidak termasuk dalam lisensi ini, dilindungi hak cipta terpisah, dan penggunaannya tunduk pada [Panduan Logo](Logo%20Kit/PANDUAN-LOGO.md).
